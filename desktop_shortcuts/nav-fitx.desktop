@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon[ca]=caja
+Exec=caja
+Name[ca]=Navegador de fitxers
+Name=Navegador de fitxers
+Icon=caja
