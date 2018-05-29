@@ -77,11 +77,13 @@ class OCSConfig(BaseWidget):
 
         self._admin      = ControlCheckBox('Mode administrador', admin)
         self._admin.value = admin
+        self._brestore        = ControlButton('Restaura escriptori')
         self._bapply        = ControlButton('Aplica')
         self._bexit        = ControlButton('Surt')
+        self._brestore.value = self.__buttonActionRestore
         self._bapply.value = self.__buttonActionApply
         self._bexit.value = self.__buttonActionCancel
-        self.formset = [ ('_internet', '_externaldev'), '_apps', '_admin', ('_bapply','_bexit'), ' ' ]
+        self.formset = [ ('_internet', '_externaldev'), '_apps', '_admin', ' ' ,'_brestore' ,('_bapply','_bexit'), ' ' ]
 
 
     def __buttonActionApply(self):
@@ -97,6 +99,12 @@ class OCSConfig(BaseWidget):
     def __buttonActionCancel(self):
         """Button action event"""
         sys.exit()
+
+
+    def __buttonActionRestore(self):
+        """Button action event"""
+	os.popen("rsync -a /home/prepare/default_desktop/examen /home/")
+
 
 #Execute the application
 if __name__ == "__main__":   pyforms.start_app( OCSConfig )
